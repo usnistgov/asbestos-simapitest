@@ -131,31 +131,27 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.4.16.v20190411</version>
+                <version>9.2.21.v20170120</version>
                 <configuration>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <webApp>
-                        <contextPath>/test</contextPath>
-                    </webApp>
-                    <contextHandlers>
-                        <contextHandler implementation="org.eclipse.jetty.maven.plugin.JettyWebAppContext">
-                            <war>${user.home}/.m2/repository/gov/nist/toolkit/xdstools2/7.2.8/xdstools2-7.2.8.war</war>
-                            <contextPath>/xdstools</contextPath>
-                        </contextHandler>
-                    </contextHandlers>
-                    <waitForChild>false</waitForChild>
-                    <stopPort>6666</stopPort>
-                    <stopKey>foo</stopKey>
+                    <!-- Enter any systemProperties here. -->
+                    <jettyXml>${basedir}/src/test/etc/jetty.xml,${basedir}/src/test/etc/jetty-http.xml,${basedir}/src/test/etc/jetty-https.xml,${basedir}/src/test/etc/jetty-ssl.xml,${basedir}/src/test/etc/jetty-logging.xml</jettyXml>
+                    <war>${user.home}/develop/toolkit2/xdstools2/target/xdstools2-7.2.8.war</war>
+                    <stopKey>alpha</stopKey>
+                    <stopPort>9099</stopPort>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>jetty.logs</name>
+                            <value>${basedir}/target</value>
+                        </systemProperty>
+                    </systemProperties>
                 </configuration>
                 <executions>
                     <execution>
                         <id>start-jetty</id>
                         <phase>pre-integration-test</phase>
                         <goals>
-                            <!--<goal>run</goal>-->
-                            <goal>run-forked</goal>
+                            <goal>deploy-war</goal>
                         </goals>
-
                     </execution>
                     <execution>
                         <id>stop-jetty</id>
@@ -165,7 +161,6 @@
                         </goals>
                     </execution>
                 </executions>
-
             </plugin>
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
