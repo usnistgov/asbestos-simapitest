@@ -1,4 +1,4 @@
-package gov.nist.asbestos
+package gov.nist.asbestos.simapiTest
 
 import spock.lang.Specification
 
