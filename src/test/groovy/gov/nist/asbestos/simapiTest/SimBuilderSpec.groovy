@@ -1,23 +1,42 @@
 package gov.nist.asbestos.simapiTest
 
+import gov.nist.asbestos.simapi.toolkit.configDatatypes.server.SimulatorActorType
+import gov.nist.asbestos.simapi.toolkit.toolkitApi.BasicSimParameters
+import gov.nist.asbestos.simapi.toolkit.toolkitApi.EngineSpi
 import gov.nist.asbestos.simapi.toolkit.toolkitApi.SimulatorBuilder
+import gov.nist.asbestos.simapi.toolkit.toolkitServicesCommon.SimConfig
 import spock.lang.Shared
 import spock.lang.Specification
 
 class SimBuilderSpec extends Specification {
     @Shared String toolkitPort = '8888'
     @Shared String toolkitUrl = "http://localhost:${toolkitPort}/xdstools2"
-    @Shared SimulatorBuilder builder
+    @Shared EngineSpi engine
 
     def setupSpec() {
-        builder = new SimulatorBuilder(toolkitUrl)
+        SimulatorBuilder builder = new SimulatorBuilder(toolkitUrl)
+        engine = builder.engine
     }
 
-    def 'a test' () {
+    def 'build reg sim' () {
+        setup:
+        BasicSimParameters regParams = new BasicSimParameters()
+        regParams.id = 'reg'
+        regParams.user = 'default'
+        regParams.actorType = SimulatorActorType.REGISTRY
+        regParams.environmentName = 'default'
+
         when:
-        def i = 1
+        engine.deleteIfExists(regParams.id, regParams.user)
 
         then:
-        builder
+        !engine.exists(engine.getSimId(regParams))
+
+        when:
+        SimConfig regConfig = engine.create(regParams)
+
+        then:
+        regConfig
+        regConfig.asString('Creation Time').size() > 5
     }
 }
