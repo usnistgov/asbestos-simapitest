@@ -22,8 +22,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <groovyVersion>2.4.13</groovyVersion>
-        <spock.version>0.7-groovy-2.0</spock.version>
+
+        <!--Aligns with spock.version and groovy-eclipse-compiler version-->
+        <groovyVersion>2.3.3</groovyVersion>
+        <spock.version>1.0-groovy-2.3</spock.version>
     </properties>
 
     <dependencies>
