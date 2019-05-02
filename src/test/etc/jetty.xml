@@ -64,8 +64,8 @@
     <!-- =========================================================== -->
     <!-- Http Configuration.                                         -->
     <!-- This is a common configuration instance used by all         -->
-    <!-- connectors that can carry HTTP semantics (HTTP, HTTPS, SPDY)-->
-    <!-- It configures the non wire protocol aspects of the HTTP     -->
+    <!-- connectors that can carry HttpPost semantics (HttpPost, HTTPS, SPDY)-->
+    <!-- It configures the non wire protocol aspects of the HttpPost     -->
     <!-- semantic.                                                   -->
     <!--                                                             -->
     <!-- This configuration is only defined here and is used by      -->

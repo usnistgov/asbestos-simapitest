@@ -3,13 +3,13 @@
 
 <!-- ============================================================= -->
 <!-- Configure the Jetty Server instance with an ID "Server"       -->
-<!-- by adding a HTTP connector.                                   -->
+<!-- by adding a HttpPost connector.                                   -->
 <!-- This configuration must be used in conjunction with jetty.xml -->
 <!-- ============================================================= -->
 <Configure id="Server" class="org.eclipse.jetty.server.Server">
 
   <!-- =========================================================== -->
-  <!-- Add a HTTP Connector.                                       -->
+  <!-- Add a HttpPost Connector.                                       -->
   <!-- Configure an o.e.j.server.ServerConnector with a single     -->
   <!-- HttpConnectionFactory instance using the common httpConfig  -->
   <!-- instance defined in jetty.xml                               -->

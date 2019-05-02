@@ -11,8 +11,8 @@
   <!-- =========================================================== -->
   <!-- Add a HTTPS Connector.                                      -->
   <!-- Configure an o.e.j.server.ServerConnector with connection   -->
-  <!-- factories for TLS (aka SSL) and HTTP to provide HTTPS.      -->
-  <!-- All accepted TLS connections are wired to a HTTP connection.-->
+  <!-- factories for TLS (aka SSL) and HttpPost to provide HTTPS.      -->
+  <!-- All accepted TLS connections are wired to a HttpPost connection.-->
   <!--                                                             -->
   <!-- Consult the javadoc of o.e.j.server.ServerConnector,        -->
   <!-- o.e.j.server.SslConnectionFactory and                       -->
